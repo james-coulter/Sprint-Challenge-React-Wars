@@ -73,7 +73,7 @@ html {
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 6px 8px 0 rgba(0,0,0,0.2);
 }
 
 .flip-card:hover .flip-card-inner {
@@ -93,13 +93,13 @@ html {
 }
 
 .flip-card-front {
-  background-color: #9d9974;
-  color: #616640;
+  background-color: #4B4B4C;
+  color: #C6C6C6;
 }
 
 .flip-card-front .name{
   font-size: 5rem;
-  text-shadow: 2px 2px #3c3c20;
+
 }
 
 .flip-card-back {
