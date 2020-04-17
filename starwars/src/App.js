@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { Alert, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import './App.css';
 import Character from './Character.js'
 
@@ -11,13 +12,15 @@ const App = () => {
   // const api_request = 'https://swapi.py4e.com/api/people/'
   
   const [characters, setCharacters] = useState([]);
+  const [search, setSearch] = useState('');
+  const [query, setQuery] = useState('')
 
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
  const getAPI = async () => {
-   const response = await fetch ('https://swapi.py4e.com/api/people/')
+   const response = await fetch (`https://swapi.py4e.com/api/people/?search=${query}`)
    const data = await response.json()
    setCharacters(data.results)
    console.log(data.results)
@@ -27,17 +30,31 @@ const App = () => {
   useEffect(() => {
     // console.log('Effect is working!!')
     getAPI()
-  }, [])
+  }, [query])
+
+  const updateSearch = e => {
+    setSearch(e.target.value)
+    // console.log(search)
+  }
+
+  
+  const getSearch = e => {
+    e.preventDefault()
+    setQuery(search)
+  }
 
   return (
     <div className="App">
+      <Alert color="primary">Testing</Alert>
       <h1 className="Header">Characters</h1>
-      <form className="search-form">
-        <input className="search-bar" type="text"/>
-        <button className="search-button" type="submit">Search</button>
-      </form>
+      <Form onSubmit={getSearch} className="search-form">
+        <FormGroup className="formGroup">
+        <Input className="search-bar" type="text" value={search} onChange={updateSearch}/>
+        <Button className="search-button" type="submit">Search</Button>
+        </FormGroup>
+      </Form>
     {characters.map(character => (
-      <Character />
+      <Character key={character.name} name={character.name} height={character.height} birthYear={character.birth_year}/>
     ))}
     </div>
   );

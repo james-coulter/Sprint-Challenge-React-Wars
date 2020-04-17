@@ -5,3 +5,26 @@ body {
   background-image: url('./images/sw-bg.jpg');
   background-size: cover;
 }
+
+.formGroup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.search-bar.form-control{
+  width: 50%;
+}
+
+/* 
+.card {
+
+}
+
+.name {
+
+}
+
+.sub {
+
+} */

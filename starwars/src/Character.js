@@ -1,13 +1,14 @@
 // Write your Character component here
 import React from 'react'
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 
-const Character = () => {
+const Character = ({name, height, birthYear}) => {
     return(
-    <div>
-        <h1>name</h1>
-        <h3>height</h3>
-        <h3>hair_color</h3>
+    <div className="card">
+        <h1 className="name">{name}</h1>
+        <h3 className="sub">{birthYear}</h3>
+        <h3 className="sub">{height}</h3>
     </div>
     );
 
